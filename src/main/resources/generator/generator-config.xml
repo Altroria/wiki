@@ -32,7 +32,7 @@
                             targetPackage="com.sunh.wiki.domain"/>
 
         <!-- mapper xml的位置 -->
-        <sqlMapGenerator targetProject="src/main"
+        <sqlMapGenerator targetProject="src/main/resources"
                          targetPackage="mapper"/>
 
         <!-- mapper类的位置 -->
@@ -40,7 +40,7 @@
                              targetPackage="com.sunh.wiki.mapper"
                              type="XMLMAPPER"/>
 
-        <table tableName="demo" domainObjectName="demo"/>
+        <table tableName="Demo" domainObjectName="Demo"/>
         <!--<table tableName="ebook"/>-->
         <!--<table tableName="category"/>-->
         <!--<table tableName="doc"/>-->
