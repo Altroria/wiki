@@ -40,8 +40,8 @@
                              targetPackage="com.sunh.wiki.mapper"
                              type="XMLMAPPER"/>
 
-        <table tableName="Demo" domainObjectName="Demo"/>
-        <!--<table tableName="ebook"/>-->
+<!--        <table tableName="Demo" domainObjectName="Demo"/>-->
+        <table tableName="ebook"/>
         <!--<table tableName="category"/>-->
         <!--<table tableName="doc"/>-->
         <!--<table tableName="content"/>-->
