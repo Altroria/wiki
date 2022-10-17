@@ -23,7 +23,6 @@ const routes: Array<RouteRecordRaw> = [
     path: '/admin/ebook',
     name: 'AdminEbook',
     component: AdminEbook
-
   }
 ]
 
