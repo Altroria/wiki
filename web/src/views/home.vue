@@ -96,14 +96,19 @@ export default defineComponent({
   setup(){
     console.log("setup");
     const ebooks = ref();
-    const ebooks1 = reactive({book: []});
+    // const ebooks1 = reactive({book: []});
 
     onMounted(()=>{
       console.log("onMounted");
-      axios.get("/ebook/list").then((response) =>{
+      axios.get("/ebook/list", {
+        params: {
+          page: 1,
+          size: 1000
+        }
+      }).then((response) =>{
         const data = response.data;
-        ebooks.value = data.content;
-        ebooks1.book = data.content;
+        ebooks.value = data.content.list;
+        // ebooks1.book = data.content;
 
         console.log(response)
       })
@@ -122,7 +127,7 @@ export default defineComponent({
     ];
     return {
       ebooks,
-      ebooks1: toRef(ebooks1, "book"),
+      // ebooks1: toRef(ebooks1, "book"),
       listData,
       pagination,
       actions,
