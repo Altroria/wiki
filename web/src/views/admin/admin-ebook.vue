@@ -37,7 +37,7 @@
 <!--        </template>-->
         <template v-slot:action="{ text, record }">
           <a-space size="small">
-            <a-button type="primary" @click="edit(record)">
+            <a-button type="primary" @click="edit">
               编辑
             </a-button>
             <a-button type="danger">
@@ -59,12 +59,13 @@
     </a-layout-content>
   </a-layout>
 
-<!--  <a-modal-->
-<!--      title="电子书表单"-->
-<!--      v-model:visible="modalVisible"-->
-<!--      :confirm-loading="modalLoading"-->
-<!--      @ok="handleModalOk"-->
-<!--  >-->
+  <a-modal
+      title="电子书表单"
+      v-model:visible="modalVisible"
+      :confirm-loading="modalLoading"
+      @ok="handleModalOk"
+  >
+    <p>test</p>
 <!--    <a-form :model="ebook" :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }">-->
 <!--      <a-form-item label="封面">-->
 <!--        <a-input v-model:value="ebook.cover" />-->
@@ -83,7 +84,7 @@
 <!--        <a-input v-model:value="ebook.description" type="textarea" />-->
 <!--      </a-form-item>-->
 <!--    </a-form>-->
-<!--  </a-modal>-->
+  </a-modal>
 </template>
 
 <script lang="ts">
@@ -193,10 +194,15 @@ export default defineComponent({
      */
     // const categoryIds = ref();
     // const ebook = ref();
-    // const modalVisible = ref(false);
-    // const modalLoading = ref(false);
-    // const handleModalOk = () => {
-    //   modalLoading.value = true;
+    const modalVisible = ref(false);
+    const modalLoading = ref(false);
+    const handleModalOk = () => {
+      modalLoading.value = true;
+      setTimeout(() => {
+        modalVisible.value =false;
+        modalLoading.value =false;
+      }, 2000);
+    };
     //   ebook.value.category1Id = categoryIds.value[0];
     //   ebook.value.category2Id = categoryIds.value[1];
     //   axios.post("/ebook/save", ebook.value).then((response) => {
@@ -216,14 +222,14 @@ export default defineComponent({
     //   });
     // };
 
-    // /**
-    //  * 编辑
-    //  */
-    // const edit = (record: any) => {
-    //   modalVisible.value = true;
-    //   // ebook.value = Tool.copy(record);
-    //   categoryIds.value = [ebook.value.category1Id, ebook.value.category2Id]
-    // };
+    /**
+     * 编辑
+     */
+    const edit = (record: any) => {
+      modalVisible.value = true;
+      // ebook.value = Tool.copy(record);
+      // categoryIds.value = [ebook.value.category1Id, ebook.value.category2Id]
+    };
     //
     // /**
     //  * 新增
@@ -307,13 +313,13 @@ export default defineComponent({
       handleQuery,
       // getCategoryName,
       //
-      // edit,
+      edit,
       // add,
       //
       // ebook,
-      // modalVisible,
-      // modalLoading,
-      // handleModalOk,
+      modalVisible,
+      modalLoading,
+      handleModalOk,
       // categoryIds,
       // level1,
       //
