@@ -198,10 +198,20 @@ export default defineComponent({
     const modalLoading = ref(false);
     const handleModalOk = () => {
       modalLoading.value = true;
-      setTimeout(() => {
-        modalVisible.value =false;
-        modalLoading.value =false;
-      }, 2000);
+      axios.post("/ebook/save", ebook.value).then((response) => {
+
+        const data = response.data;
+        if (data.success){
+          modalVisible.value =false;
+          modalLoading.value =false;
+        }
+        //重新加载数据
+        handleQuery(
+            {
+              page: pagination.value.current,
+              size: pagination.value.pageSize
+            });
+      })
     };
     //   ebook.value.category1Id = categoryIds.value[0];
     //   ebook.value.category2Id = categoryIds.value[1];
