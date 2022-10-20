@@ -3,7 +3,10 @@
     <a-layout-content
         :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }"
     >
-<!--      <p>-->
+      <p>
+        <a-button type="primary" @click="add()" size="large">
+          新增
+        </a-button>
 <!--        <a-form layout="inline" :model="param">-->
 <!--          <a-form-item>-->
 <!--            <a-input v-model:value="param.name" placeholder="名称">-->
@@ -20,7 +23,7 @@
 <!--            </a-button>-->
 <!--          </a-form-item>-->
 <!--        </a-form>-->
-<!--      </p>-->
+      </p>
       <a-table
           :columns="columns"
           :row-key="record => record.id"
@@ -242,13 +245,13 @@ export default defineComponent({
       // categoryIds.value = [ebook.value.category1Id, ebook.value.category2Id]
     };
     //
-    // /**
-    //  * 新增
-    //  */
-    // const add = () => {
-    //   modalVisible.value = true;
-    //   ebook.value = {};
-    // };
+    /**
+     * 新增
+     */
+    const add = () => {
+      modalVisible.value = true;
+      ebook.value = {};
+    };
     //
     // const handleDelete = (id: number) => {
     //   axios.delete("/ebook/delete/" + id).then((response) => {
@@ -325,7 +328,7 @@ export default defineComponent({
       // getCategoryName,
       //
       edit,
-      // add,
+      add,
       //
       ebook,
       modalVisible,
